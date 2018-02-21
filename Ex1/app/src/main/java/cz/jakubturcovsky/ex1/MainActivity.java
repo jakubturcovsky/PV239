@@ -30,6 +30,15 @@ public class MainActivity
         });
 
         // Exercise 2
-        startActivity(MessageActivity.newIntent(this, "Voila!"));
+        Button button2 = findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(MessageActivity.newIntent(MainActivity.this, "Voila!"));
+            }
+        });
+
+        // Enough time? R.string, margins, paddings etc.
     }
 }
