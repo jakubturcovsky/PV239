@@ -11,17 +11,17 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Answer to the Ultimate Question of Life, the Universe, and Everything?"/>
+        android:text="@string/question"/>
 
     <Button
         android:id="@+id/button"
-        android:text="Reveal"
+        android:text="@string/reveal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/button2"
-        android:text="New Activity"
+        android:text="@string/start_message_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
