@@ -30,10 +30,24 @@ public class MainActivity
                         startListActivity(ListActivity.ListType.RECYCLER_VIEW);
                     }
                 });
+
+        findViewById(R.id.fragments)
+                .setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        startFragmentActivity();
+                    }
+                });
     }
 
     private void startListActivity(@ListActivity.ListType int listType) {
         Intent intent = ListActivity.newIntent(this, listType);
+        startActivity(intent);
+    }
+
+    private void startFragmentActivity() {
+        Intent intent = FragmentActivity.newIntent(this);
         startActivity(intent);
     }
 }

@@ -19,6 +19,8 @@
         </activity>
 
         <activity android:name=".ListActivity"/>
+
+        <activity android:name=".FragmentActivity"/>
     </application>
 
 </manifest>
