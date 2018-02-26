@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
+import android.util.Log;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -35,7 +35,7 @@ public class NotificationService
 
             @Override
             public void run() {
-                Toast.makeText(NotificationService.this, "Service running", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "Service running");
             }
         }, TIMER_DELAY, TIMER_DELAY);
 

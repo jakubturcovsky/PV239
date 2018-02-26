@@ -7,6 +7,7 @@ import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -72,8 +73,9 @@ public class ListActivity
     }
 
     private void initRecyclerView() {
-        ImageListAdapter adapter = new ImageListAdapter(new UserDb());
+        ImageListAdapter adapter = new ImageListAdapter(this, new UserDb());
         RecyclerView recyclerView = findViewById(R.id.list_recycler);
         recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }

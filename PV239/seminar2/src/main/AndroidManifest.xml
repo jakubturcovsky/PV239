@@ -21,6 +21,8 @@
         <activity android:name=".ListActivity"/>
 
         <activity android:name=".FragmentActivity"/>
+
+        <service android:name=".NotificationService"/>
     </application>
 
 </manifest>
