@@ -39,6 +39,15 @@ public class MainActivity
                         startFragmentActivity();
                     }
                 });
+
+        findViewById(R.id.service)
+                .setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        startNotificationService();
+                    }
+                });
     }
 
     private void startListActivity(@ListActivity.ListType int listType) {
@@ -49,5 +58,10 @@ public class MainActivity
     private void startFragmentActivity() {
         Intent intent = FragmentActivity.newIntent(this);
         startActivity(intent);
+    }
+
+    private void startNotificationService() {
+        Intent intent = NotificationService.newIntent(this);
+        startService(intent);
     }
 }
