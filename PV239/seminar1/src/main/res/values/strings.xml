@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Seminar1</string>
+    <string name="question">Answer to the Ultimate Question of Life, the Universe, and Everything?</string>
+    <string name="answer">42</string>
+    <string name="reveal">Reveal</string>
+    <string name="start_message_activity">Start MessageActivity</string>
+</resources>
