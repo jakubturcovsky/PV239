@@ -66,6 +66,9 @@ public class ListActivity
         }
     }
 
+    /**
+     * The simples ListView, displays a list of names in linear vertically scrollable window.
+     */
     private void initSimpleList() {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new UserDb().getNames());
         ListView list = findViewById(android.R.id.list);
@@ -73,9 +76,10 @@ public class ListActivity
     }
 
     private void initRecyclerView() {
-        ImageListAdapter adapter = new ImageListAdapter(this, new UserDb());
+        ImageListAdapter adapter = new ImageListAdapter(new UserDb());
         RecyclerView recyclerView = findViewById(R.id.list_recycler);
         recyclerView.setAdapter(adapter);
+        // Don't forget to tell the RecyclerView how to show the items! (Linear - LinearLayoutManager, Grid - GridLayoutManager etc.)
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
