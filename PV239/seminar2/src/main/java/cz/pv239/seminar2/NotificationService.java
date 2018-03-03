@@ -30,6 +30,7 @@ public class NotificationService
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        // Do an action (display log) every TIMER_DELAY ms
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
 
