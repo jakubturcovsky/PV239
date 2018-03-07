@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,17 +14,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import cz.pv239.seminar3.api.GithubApi;
 import cz.pv239.seminar3.R;
-import cz.pv239.seminar3.model.User;
 import cz.pv239.seminar3.adapter.WatchersAdapter;
+import cz.pv239.seminar3.api.GithubApi;
+import cz.pv239.seminar3.model.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,9 +73,7 @@ public class GithubFragment
     public void onLoadWatchersClicked() {
         if (mWatchersWrapper.getVisibility() == View.GONE) {
             mWatchersWrapper.setVisibility(View.VISIBLE);
-            mAdapter = new WatchersAdapter(new ArrayList<User>());
-            mList.setAdapter(mAdapter);
-            mList.setLayoutManager(new LinearLayoutManager(getContext()));
+            // TODO Create adapter, set adapter to RecyclerView, don't forget to set LayoutManager to the RecyclerView
         }
         loadWatchers("openwrt", "openwrt");
     }
@@ -114,19 +110,6 @@ public class GithubFragment
      * Loads subscribers of a user.
      */
     private void loadWatchers(@NonNull String username, @NonNull String repositoryName) {
-        Call<List<User>> userCall = mGithubApi.getService().getWatcherList(username, repositoryName);
-        userCall.enqueue(new Callback<List<User>>() {
-
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                populateList(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
     }
 
     private void populateList(List<User> watchers) {
