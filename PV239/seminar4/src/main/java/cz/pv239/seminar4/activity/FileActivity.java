@@ -53,6 +53,7 @@ public class FileActivity
 
     private void writePermissionCheck() {
         // TODO: Check if you have the WRITE_EXTERNAL_STORAGE permission
+        // TODO: https://developer.android.com/training/permissions/requesting.html#perm-check
     }
 
     /**
