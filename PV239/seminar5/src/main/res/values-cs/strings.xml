@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- COMMON -->
+    <string name="app_name">Cvičení 5</string>
+    <string name="settings">Nastavení</string>
+
+    <!-- MAIN MENU -->
+    <string name="menu_main_notification">Zobraz notifikaci</string>
+    <string name="menu_main_settings">Nastavení</string>
+    <string name="menu_main_about">O aplikaci</string>
+
+    <!-- NOTIFICATION -->
+    <string name="notification_channel_test_name">Test</string>
+    <string name="notification_channel_test_description">Neprojdeš dál!</string>
+
+    <!-- SETTINGS -->
+    <string name="settings_category_1">Kategorie 1</string>
+    <string name="settings_high_score">Nejvyšší skóre</string>
+    <string name="settings_high_score_description">Nejvyšší skóre ze všech</string>
+    <string name="settings_foo">Foo</string>
+    <string name="settings_category_2">Kategorie 2</string>
+    <string name="settings_bar">Bar</string>
+</resources>

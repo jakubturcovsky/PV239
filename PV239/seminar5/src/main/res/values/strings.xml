@@ -1,0 +1,22 @@
+<resources>
+    <!-- COMMON -->
+    <string name="app_name">Seminar5</string>
+    <string name="settings">Settings</string>
+
+    <!-- MAIN MENU -->
+    <string name="menu_main_notification">Show a notification</string>
+    <string name="menu_main_settings">Settings</string>
+    <string name="menu_main_about">About</string>
+
+    <!-- NOTIFICATION -->
+    <string name="notification_channel_test_name">Test</string>
+    <string name="notification_channel_test_description">You shall not pass!</string>
+
+    <!-- SETTINGS -->
+    <string name="settings_category_1">Category 1</string>
+    <string name="settings_high_score">High score</string>
+    <string name="settings_high_score_description">The highest score of all</string>
+    <string name="settings_foo">Foo</string>
+    <string name="settings_category_2">Category 2</string>
+    <string name="settings_bar">Bar</string>
+</resources>
