@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import cz.pv239.seminar2.exercise.ExerciseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startNotificationService() {
-        val intent = ToastService.newIntent(this)
+        val intent = AnnoyingService.newIntent(this)
         startService(intent)
     }
 

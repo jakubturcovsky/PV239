@@ -1,4 +1,4 @@
-package cz.pv239.seminar2
+package cz.pv239.seminar2.exercise
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
