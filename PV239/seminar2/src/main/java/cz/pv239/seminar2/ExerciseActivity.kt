@@ -3,6 +3,7 @@ package cz.pv239.seminar2
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
+// TODO Don't forget to register this activity in manifest!
 class ExerciseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
