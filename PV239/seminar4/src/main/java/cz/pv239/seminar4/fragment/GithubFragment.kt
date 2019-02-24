@@ -1,5 +1,6 @@
-package cz.pv239.seminar3.fragment
+package cz.pv239.seminar4.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import cz.pv239.seminar3.R
-import cz.pv239.seminar3.adapter.WatchersAdapter
-import cz.pv239.seminar3.api.GithubApi
-import cz.pv239.seminar3.model.User
+import cz.pv239.seminar4.R
+import cz.pv239.seminar4.activity.FileActivity
+import cz.pv239.seminar4.adapter.WatchersAdapter
+import cz.pv239.seminar4.api.GithubApi
+import cz.pv239.seminar4.model.User
+import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_list.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,24 +29,34 @@ class GithubFragment : Fragment() {
             return GithubFragment()
         }
     }
-
     private val githubApi = GithubApi()
 
-    private lateinit var adapter: WatchersAdapter
+    private val realm = Realm.getDefaultInstance()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
         view.findViewById<Button>(R.id.watchers).setOnClickListener {
-            if (watchers_wrapper.visibility == View.GONE) {
-                watchers_wrapper.visibility = View.VISIBLE
-                list.adapter = adapter
-                list.layoutManager = LinearLayoutManager(context)
-            }
-            loadWatchers("jakubturcovsky", "PV239")
+            loadWatchers("openwrt", "openwrt")
         }
+        view.findViewById<Button>(R.id.saving_file).setOnClickListener {
+            val activity = activity ?: return@setOnClickListener
+            activity.startActivity(Intent(activity, FileActivity::class.java))
+        }
+
         loadUser("jakubturcovsky")
 
+        val users = realm.where(User::class.java).findAll()
+        val list = view.findViewById<RecyclerView>(android.R.id.list)
+        list.adapter = WatchersAdapter(users)
+        list.layoutManager = LinearLayoutManager(context)
+        list.setHasFixedSize(true)
+
         return view
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
     }
 
     /**
@@ -76,20 +90,25 @@ class GithubFragment : Fragment() {
         userCall.enqueue(object : Callback<List<User>> {
 
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                populateList(response.body())
+                saveResult(response.body())
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 t.printStackTrace()
             }
+
+            /**
+             * IMPORTANT NOTE: It's better to write and read asynchronously. But for the sake of simplicity...
+             */
+            private fun saveResult(watchers: List<User>?) {
+                var realm: Realm? = null
+                try {
+                    realm = Realm.getDefaultInstance()
+                    realm.executeTransaction { it.insertOrUpdate(watchers!!) }
+                } finally {
+                    realm?.close()
+                }
+            }
         })
-    }
-
-    private fun populateList(watchers: List<User>?) {
-        if (watchers == null) {
-            return
-        }
-
-        adapter.refreshUsers(watchers)
     }
 }
