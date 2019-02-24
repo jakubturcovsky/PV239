@@ -1,9 +1,9 @@
 package cz.pv239.seminar4.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import androidx.core.app.FragmentManager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import cz.pv239.seminar4.R;
 import cz.pv239.seminar4.fragment.GithubFragment;
 

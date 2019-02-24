@@ -1,9 +1,9 @@
 package cz.pv239.seminar5.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
 import cz.pv239.seminar5.fragment.SettingsFragment;
 
 public class SettingsActivity

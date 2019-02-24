@@ -5,15 +5,15 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.core.app.FragmentManager;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.FragmentManager;
 import cz.pv239.seminar5.R;
 import cz.pv239.seminar5.fragment.MainFragment;
 

@@ -2,10 +2,6 @@ package cz.pv239.seminar4.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +12,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import androidx.core.app.Fragment;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import cz.pv239.seminar4.R;
 import cz.pv239.seminar4.activity.FileActivity;
 import cz.pv239.seminar4.adapter.WatchersAdapter;
@@ -41,10 +37,9 @@ public class GithubFragment
     private WatchersAdapter mAdapter;
     private Realm mRealm;
 
-    private Unbinder mUnbinder;
-    @BindView(android.R.id.list) RecyclerView mList;
-    @BindView(R.id.avatar) ImageView mAvatar;
-    @BindView(R.id.name) TextView mName;
+    RecyclerView mList;
+    ImageView mAvatar;
+    TextView mName;
 
     public static GithubFragment newInstance() {
         return new GithubFragment();
@@ -61,7 +56,24 @@ public class GithubFragment
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        mUnbinder = ButterKnife.bind(this, view);
+        mList = view.findViewById(android.R.id.list);
+        mAvatar = view.findViewById(R.id.avatar);
+        mName = view.findViewById(R.id.name);
+
+        view.findViewById(R.id.watchers).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                loadWatchers("openwrt", "openwrt");
+            }
+        });
+        view.findViewById(R.id.saving_file).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                getActivity().startActivity(new Intent(getActivity(), FileActivity.class));
+            }
+        });
 
         loadUser("jakubturcovsky");
 
@@ -75,25 +87,9 @@ public class GithubFragment
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mUnbinder.unbind();
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
         mRealm.close();
-    }
-
-    @OnClick(R.id.watchers)
-    public void onLoadWatchersClicked() {
-        loadWatchers("openwrt", "openwrt");
-    }
-
-    @OnClick(R.id.saving_file)
-    protected void onStartFileActivityClicked() {
-        getActivity().startActivity(new Intent(getActivity(), FileActivity.class));
     }
 
     /**
