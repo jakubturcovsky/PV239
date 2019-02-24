@@ -1,8 +1,8 @@
 package cz.pv239.seminar1
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class MessageActivity : AppCompatActivity() {
 
