@@ -1,11 +1,6 @@
 package cz.pv239.seminar3.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +13,15 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
-import cz.pv239.seminar3.api.GithubApi;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import cz.pv239.seminar3.R;
-import cz.pv239.seminar3.model.User;
 import cz.pv239.seminar3.adapter.WatchersAdapter;
+import cz.pv239.seminar3.api.GithubApi;
+import cz.pv239.seminar3.model.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,11 +34,10 @@ public class GithubFragment
     private GithubApi mGithubApi;
     private WatchersAdapter mAdapter;
 
-    private Unbinder mUnbinder;
-    @BindView(android.R.id.list) RecyclerView mList;
-    @BindView(R.id.avatar) ImageView mAvatar;
-    @BindView(R.id.name) TextView mName;
-    @BindView(R.id.watchers_wrapper) LinearLayout mWatchersWrapper;
+    RecyclerView mList;
+    ImageView mAvatar;
+    TextView mName;
+    LinearLayout mWatchersWrapper;
 
     public static GithubFragment newInstance() {
         return new GithubFragment();
@@ -56,30 +51,28 @@ public class GithubFragment
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        mUnbinder = ButterKnife.bind(this, view);
+        mList = view.findViewById(android.R.id.list);
+        mAvatar = view.findViewById(R.id.avatar);
+        mName = view.findViewById(R.id.name);
+        mWatchersWrapper = view.findViewById(R.id.watchers_wrapper);
+        view.findViewById(R.id.watchers).setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                if (mWatchersWrapper.getVisibility() == View.GONE) {
+                    mWatchersWrapper.setVisibility(View.VISIBLE);
+                    mAdapter = new WatchersAdapter(new ArrayList<User>());
+                    mList.setAdapter(mAdapter);
+                    mList.setLayoutManager(new LinearLayoutManager(getContext()));
+                }
+                loadWatchers("openwrt", "openwrt");
+            }
+        });
         loadUser("jakubturcovsky");
 
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mUnbinder.unbind();
-    }
-
-    @OnClick(R.id.watchers)
-    public void onLoadWatchersClicked() {
-        if (mWatchersWrapper.getVisibility() == View.GONE) {
-            mWatchersWrapper.setVisibility(View.VISIBLE);
-            mAdapter = new WatchersAdapter(new ArrayList<User>());
-            mList.setAdapter(mAdapter);
-            mList.setLayoutManager(new LinearLayoutManager(getContext()));
-        }
-        loadWatchers("openwrt", "openwrt");
     }
 
     /**
