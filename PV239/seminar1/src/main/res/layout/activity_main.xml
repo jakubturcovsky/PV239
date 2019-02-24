@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -22,5 +23,34 @@
         android:text="@string/start_message_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/hw1_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hw1_edit_text_hint"
+        android:inputType="text"
+        android:importantForAutofill="no"
+        tools:targetApi="o"/>
+
+    <Button
+        android:id="@+id/hw1_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hw1_button_text"/>
+
+    <Button
+        android:id="@+id/hw2_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hw2_button_text"/>
+
+    <ImageView
+        android:id="@+id/thumb_up"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_thumb_up_black_24dp"
+        android:contentDescription="@string/thumb_up_description"
+        android:visibility="gone"/>
 
 </LinearLayout>

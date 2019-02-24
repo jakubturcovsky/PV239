@@ -4,4 +4,8 @@
     <string name="answer">42</string>
     <string name="reveal">Reveal</string>
     <string name="start_message_activity">Start MessageActivity</string>
+    <string name="thumb_up_description">Thumb up - blue</string>
+    <string name="hw1_edit_text_hint">Write text here</string>
+    <string name="hw1_button_text">Write text to the TextView</string>
+    <string name="hw2_button_text">Toggle visibility</string>
 </resources>
