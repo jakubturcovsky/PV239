@@ -1,8 +1,6 @@
 package cz.pv239.seminar4.adapter;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +9,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import cz.pv239.seminar4.R;
 import cz.pv239.seminar4.model.User;
 import io.realm.OrderedRealmCollection;
@@ -55,14 +53,13 @@ public class WatchersAdapter
      */
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.avatar)
         ImageView mAvatar;
-        @BindView(R.id.login)
         TextView mLogin;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            mAvatar = itemView.findViewById(R.id.avatar);
+            mLogin = itemView.findViewById(R.id.login);
         }
     }
 }

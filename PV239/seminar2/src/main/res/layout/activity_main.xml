@@ -33,4 +33,10 @@
         android:layout_height="wrap_content"
         android:text="Service"/>
 
+    <Button
+        android:id="@+id/exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercise"/>
+
 </LinearLayout>

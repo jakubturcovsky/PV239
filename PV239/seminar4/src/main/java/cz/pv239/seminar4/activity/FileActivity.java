@@ -10,11 +10,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,9 +20,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import cz.pv239.seminar4.R;
 
 public class FileActivity
@@ -37,13 +35,21 @@ public class FileActivity
 
     private boolean mSaving;
 
-    @BindView(R.id.content) EditText mContentEditText;
+    EditText mContentEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file);
-        ButterKnife.bind(this);
+        mContentEditText = findViewById(R.id.content);
+        findViewById(R.id.save).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                mSaving = true;
+                writePermissionCheck();
+            }
+        });
     }
 
     @Override
@@ -57,12 +63,6 @@ public class FileActivity
                 Toast.makeText(FileActivity.this, "Couldn't save data", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-
-    @OnClick(R.id.save)
-    protected void onSaveClicked() {
-        mSaving = true;
-        writePermissionCheck();
     }
 
     private void writePermissionCheck() {

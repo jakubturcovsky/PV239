@@ -2,9 +2,9 @@ package cz.pv239.seminar5.fragment;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import cz.pv239.seminar5.R;
 
 public class SettingsFragment

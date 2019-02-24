@@ -1,9 +1,12 @@
 package cz.pv239.seminar2
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import cz.pv239.seminar2.exercise.ExerciseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.fragments).setOnClickListener { startFragmentActivity() }
 
         findViewById<View>(R.id.service).setOnClickListener { startNotificationService() }
+
+        exercise.setOnClickListener { startExerciseActivity() }
     }
 
     private fun startListActivity(listType: ListActivity.ListType) {
@@ -35,7 +40,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startNotificationService() {
-        val intent = ToastService.newIntent(this)
+        val intent = AnnoyingService.newIntent(this)
         startService(intent)
+    }
+
+    private fun startExerciseActivity() {
+        val intent = Intent(this, ExerciseActivity::class.java)
+        startActivity(intent)
     }
 }
