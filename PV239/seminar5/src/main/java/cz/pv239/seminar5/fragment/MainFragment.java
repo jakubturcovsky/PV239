@@ -2,11 +2,11 @@ package cz.pv239.seminar5.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.app.Fragment;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cz.pv239.seminar5.R;
