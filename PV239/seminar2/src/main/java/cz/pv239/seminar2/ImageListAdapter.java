@@ -1,13 +1,16 @@
 package cz.pv239.seminar2;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ImageListAdapter
         extends RecyclerView.Adapter<ImageListAdapter.ViewHolder> {
@@ -21,8 +24,9 @@ public class ImageListAdapter
     /**
      * Creates new ViewHolder instances and inflates them with XML layout.
      */
+    @NotNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.image_list_item, parent, false));
     }
 

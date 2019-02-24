@@ -24,7 +24,7 @@
 
         <activity android:name=".FragmentActivity"/>
 
-        <service android:name=".NotificationService"/>
+        <service android:name=".ToastService"/>
     </application>
 
 </manifest>

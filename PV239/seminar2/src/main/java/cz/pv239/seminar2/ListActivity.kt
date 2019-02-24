@@ -3,18 +3,18 @@ package cz.pv239.seminar2
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class ListActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_LIST_TYPE = "extra_list_type"
-        
+
         fun newIntent(context: Context, listType: ListType): Intent {
             val intent = Intent(context, ListActivity::class.java)
             intent.putExtra(EXTRA_LIST_TYPE, listType)
