@@ -15,6 +15,7 @@
             android:theme="@style/AppTheme.Gray">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
@@ -23,8 +24,10 @@
         <activity android:name=".ListActivity"/>
 
         <activity android:name=".FragmentActivity"/>
+        <activity android:name=".exercise.ExerciseActivity"/>
 
-        <service android:name=".NotificationService"/>
+        <service android:name=".AnnoyingService"/>
+        <service android:name=".exercise.ToastService"/>
     </application>
 
 </manifest>

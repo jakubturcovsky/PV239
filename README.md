@@ -1,2 +1,2 @@
 # PV239
-Code samples for exercise for FI MUNI PV239
+Code samples for FI MUNI seminar of the course PV239
