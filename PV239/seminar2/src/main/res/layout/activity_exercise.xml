@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- This layout will be filled with our Fragment -->
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
