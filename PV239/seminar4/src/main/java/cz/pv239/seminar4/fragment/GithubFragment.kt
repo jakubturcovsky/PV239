@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import cz.pv239.seminar4.R
 import cz.pv239.seminar4.activity.FileActivity
@@ -34,11 +32,15 @@ class GithubFragment : Fragment() {
     private val realm = Realm.getDefaultInstance()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
-        view.findViewById<Button>(R.id.watchers).setOnClickListener {
+        return inflater.inflate(R.layout.fragment_list, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        watchers.setOnClickListener {
             loadWatchers("openwrt", "openwrt")
         }
-        view.findViewById<Button>(R.id.saving_file).setOnClickListener {
+        saving_file.setOnClickListener {
             val activity = activity ?: return@setOnClickListener
             activity.startActivity(Intent(activity, FileActivity::class.java))
         }
@@ -46,12 +48,9 @@ class GithubFragment : Fragment() {
         loadUser("jakubturcovsky")
 
         val users = realm.where(User::class.java).findAll()
-        val list = view.findViewById<RecyclerView>(android.R.id.list)
         list.adapter = WatchersAdapter(users)
         list.layoutManager = LinearLayoutManager(context)
         list.setHasFixedSize(true)
-
-        return view
     }
 
     override fun onDestroy() {

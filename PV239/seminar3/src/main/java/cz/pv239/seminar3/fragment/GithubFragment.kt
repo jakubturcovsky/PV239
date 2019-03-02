@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -28,11 +27,15 @@ class GithubFragment : Fragment() {
 
     private val githubApi = GithubApi()
 
-    private lateinit var adapter: WatchersAdapter
+    private var adapter: WatchersAdapter = WatchersAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
-        view.findViewById<Button>(R.id.watchers).setOnClickListener {
+        return inflater.inflate(R.layout.fragment_list, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        watchers.setOnClickListener {
             if (watchers_wrapper.visibility == View.GONE) {
                 watchers_wrapper.visibility = View.VISIBLE
                 list.adapter = adapter
@@ -41,8 +44,6 @@ class GithubFragment : Fragment() {
             loadWatchers("jakubturcovsky", "PV239")
         }
         loadUser("jakubturcovsky")
-
-        return view
     }
 
     /**
