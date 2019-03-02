@@ -73,17 +73,7 @@ class GithubFragment : Fragment() {
      * Loads subscribers of a user.
      */
     private fun loadWatchers(username: String, repositoryName: String) {
-        val userCall = githubApi.service.getWatcherList(username, repositoryName)
-        userCall.enqueue(object : Callback<List<User>> {
-
-            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                populateList(response.body())
-            }
-
-            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                t.printStackTrace()
-            }
-        })
+        // TODO download watchers, then call populateList()
     }
 
     private fun populateList(watchers: List<User>?) {
