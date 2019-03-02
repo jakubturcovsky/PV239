@@ -26,8 +26,8 @@ class ExerciseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         /* Exercise 1 */
         // Add on button click listener
-        button.setOnClickListener { textview.text = edittext.text }
         // Inside it, get text from edittext and place it into textview
+        button.setOnClickListener { textview.text = edittext.text }
 
         /* Exercise 2 */
         // Create Intent for starting ToastIntentServices
