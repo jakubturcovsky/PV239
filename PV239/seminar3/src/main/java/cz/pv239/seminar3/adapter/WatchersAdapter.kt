@@ -20,7 +20,8 @@ class WatchersAdapter(private var users: List<User> = listOf()) : RecyclerView.A
      * Creates new ViewHolder instances and inflates them with XML layout.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(View(parent.context)) // TODO fix this
+        // TODO fix this, use LayoutInflater to inflate XML layout to a View and give it to the ViewHolder
+        return ViewHolder(View(parent.context))
     }
 
     /**
