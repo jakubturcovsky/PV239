@@ -1,14 +1,13 @@
 package cz.pv239.seminar5.fragment;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
 import cz.pv239.seminar5.R;
 
 public class SettingsFragment
-        extends PreferenceFragment {
+        extends PreferenceFragmentCompat {
 
     @NonNull
     public static SettingsFragment newInstance() {
@@ -16,9 +15,7 @@ public class SettingsFragment
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.settings);
     }
 }

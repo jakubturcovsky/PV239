@@ -14,7 +14,7 @@ public class SettingsActivity
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
-            getFragmentManager()
+            getSupportFragmentManager()
                     .beginTransaction()
                     .replace(android.R.id.content, SettingsFragment.newInstance())
                     .commit();
