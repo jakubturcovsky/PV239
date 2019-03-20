@@ -13,7 +13,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
     }
 
-    override fun onCreatePreferences(savedInstanceState: Bundle, rootKey: String) {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.settings)
     }
 }
