@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -19,6 +18,7 @@ import cz.pv239.seminar5.fragment.MainFragment;
 
 /**
  * TODO Tasks:
+ * * Create about dialog instead of a Toast
  * * Create ListPreference with at least 3 options
  * * Create your own notification (add PendingIntent and handle it if you have time)
  * * Add another menu item from the MainFragment
@@ -70,8 +70,14 @@ public class MainActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void createNotificationChannel(@NonNull NotificationManager manager) {
+    private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            if (manager == null) {
+                // Show error info
+                return;
+            }
+
             if (manager.getNotificationChannel(CHANNEL_ID) != null) {
                 return;
             }
@@ -93,15 +99,12 @@ public class MainActivity
      *
      * More about notifications:
      * https://developer.android.com/training/notify-user/build-notification.html#add_the_support_library
+     *
+     * If you want to handle tap action:
+     * https://developer.android.com/training/notify-user/build-notification#click
      */
     private void makeNotification() {
-        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        if (manager == null) {
-            // Show error info
-            return;
-        }
-
-        createNotificationChannel(manager);
+        createNotificationChannel();
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_child_care_white_24dp)
@@ -109,7 +112,7 @@ public class MainActivity
                 .setContentText("Content")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        NotificationManagerCompat compatManager = NotificationManagerCompat.from(this);
-        compatManager.notify(NOTIFICATION_ID, builder.build());
+        NotificationManagerCompat manager = NotificationManagerCompat.from(this);
+        manager.notify(NOTIFICATION_ID, builder.build());
     }
 }
