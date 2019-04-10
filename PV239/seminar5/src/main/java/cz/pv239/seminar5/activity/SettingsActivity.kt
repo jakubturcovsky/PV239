@@ -2,7 +2,6 @@ package cz.pv239.seminar5.activity
 
 import android.os.Bundle
 import android.view.MenuItem
-
 import androidx.appcompat.app.AppCompatActivity
 import cz.pv239.seminar5.fragment.SettingsFragment
 

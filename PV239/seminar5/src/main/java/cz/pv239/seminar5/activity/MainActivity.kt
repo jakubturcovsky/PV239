@@ -2,6 +2,7 @@ package cz.pv239.seminar5.activity
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -14,6 +15,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import cz.pv239.seminar5.R
 import cz.pv239.seminar5.fragment.MainFragment
+
+
 
 /**
  * TODO Tasks:
@@ -81,11 +84,16 @@ class MainActivity : AppCompatActivity() {
     private fun makeNotification() {
         createNotificationChannel()
 
+        val notifyIntent = Intent(this, SettingsActivity::class.java).putExtra("foo", "bar")
+        // Set the Activity to start in a new, empty task
+        notifyIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
+
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_child_care_white_24dp)
                 .setContentTitle("Title")
                 .setContentText("Content")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(PendingIntent.getActivity(this, 54, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT))
 
         val manager = NotificationManagerCompat.from(this)
         manager.notify(NOTIFICATION_ID, builder.build())

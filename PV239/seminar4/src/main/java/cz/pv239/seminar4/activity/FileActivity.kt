@@ -85,7 +85,7 @@ class FileActivity : AppCompatActivity() {
         alertBuilder.setPositiveButton(android.R.string.ok) { dialog, which ->
             // this way you can get to the screen to set the permissions manually
             val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.fromParts("package", packageName, null))
+                Uri.fromParts("package", packageName, null))
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
