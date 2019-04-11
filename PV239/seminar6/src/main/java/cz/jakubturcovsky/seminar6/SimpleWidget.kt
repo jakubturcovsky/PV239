@@ -9,6 +9,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.RemoteViews
 
+/**
+ * For more info look here: https://medium.com/android-bits/android-widgets-ad3d166458d3
+ */
 class SimpleWidget : AppWidgetProvider() {
 
     /**
