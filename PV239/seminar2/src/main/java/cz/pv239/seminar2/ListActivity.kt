@@ -39,12 +39,12 @@ class ListActivity : AppCompatActivity() {
         val listView = findViewById<ListView>(android.R.id.list)
         val recyclerView = findViewById<RecyclerView>(R.id.list_recycler)
         when (listType) {
-            ListActivity.ListType.LIST_VIEW -> {
+            ListType.LIST_VIEW -> {
                 initSimpleList()
                 listView.visibility = View.VISIBLE
                 recyclerView.visibility = View.GONE
             }
-            ListActivity.ListType.RECYCLER_VIEW -> {
+            ListType.RECYCLER_VIEW -> {
                 initRecyclerView()
                 listView.visibility = View.GONE
                 recyclerView.visibility = View.VISIBLE
