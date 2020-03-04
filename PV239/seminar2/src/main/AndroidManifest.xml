@@ -24,10 +24,8 @@
         <activity android:name=".ListActivity"/>
 
         <activity android:name=".FragmentActivity"/>
-        <activity android:name=".exercise.ExerciseActivity"/>
 
         <service android:name=".AnnoyingService"/>
-        <service android:name=".exercise.ToastService"/>
     </application>
 
 </manifest>

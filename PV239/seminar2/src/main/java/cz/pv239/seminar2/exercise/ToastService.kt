@@ -3,7 +3,6 @@ package cz.pv239.seminar2.exercise
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import android.widget.Toast
 
 // TODO Don't forget to register it in the manifest
 class ToastService : Service() {
@@ -25,9 +24,9 @@ class ToastService : Service() {
      */
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         // Get extra string from the intent argument
-        val message = intent?.getStringExtra(EXTRA_MESSAGE) as String
+
         // Create a toast and show it
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
 
         return START_STICKY
     }

@@ -6,12 +6,12 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textview"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/edittext"
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter some text"/>
@@ -23,7 +23,7 @@
         android:text="Click me!"/>
 
     <Button
-        android:id="@+id/start_service"
+        android:id="@+id/startService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start service"/>
