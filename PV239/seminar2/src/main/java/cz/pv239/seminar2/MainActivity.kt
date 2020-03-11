@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.service).setOnClickListener { startNotificationService() }
 
+        // Previous views were bound by findViewById(), this one is using Kotlin's synthetic binding
         exercise.setOnClickListener { startExerciseActivity() }
     }
 

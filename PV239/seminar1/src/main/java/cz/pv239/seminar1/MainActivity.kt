@@ -13,6 +13,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        private val TAG = MainActivity::class.java.simpleName
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Set XML layout with views to this Activity
@@ -58,9 +62,5 @@ class MainActivity : AppCompatActivity() {
                 View.VISIBLE
             }
         }
-    }
-
-    companion object {
-        private val TAG = MainActivity::class.java.simpleName
     }
 }

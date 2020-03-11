@@ -3,27 +3,28 @@
 
     <PreferenceCategory
         android:title="@string/settings_category_1">
-    <Preference
-        android:title="@string/settings_high_score"
-        android:summary="@string/settings_high_score_description"
-        android:key="pref_high_score"
-        android:order="0"/>
 
-    <CheckBoxPreference
-        android:key="pref_foo"
-        android:title="@string/settings_foo"
-        android:order="10"/>
+        <Preference
+            android:title="@string/settings_high_score"
+            android:summary="@string/settings_high_score_description"
+            android:key="pref_high_score"
+            android:order="0"/>
+
+        <CheckBoxPreference
+            android:key="pref_foo"
+            android:title="@string/settings_foo"
+            android:order="10"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/settings_category_2">
 
-    <SwitchPreference
-        android:title="@string/settings_bar"
-        android:key="pref_bar"
-        android:enabled="false"
-        android:order="20"/>
+        <SwitchPreference
+            android:title="@string/settings_bar"
+            android:key="pref_bar"
+            android:enabled="false"
+            android:order="20"/>
 
     </PreferenceCategory>
 

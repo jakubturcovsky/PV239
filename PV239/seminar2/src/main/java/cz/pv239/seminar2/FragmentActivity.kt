@@ -18,14 +18,12 @@ class FragmentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment)
 
-        val fragmentManager = supportFragmentManager ?: return
-
         // Put a new instance of FirstFragment to FrameLayout with id R.id.content1
-        fragmentManager.beginTransaction().add(R.id.content1,
+        supportFragmentManager.beginTransaction().add(R.id.content1,
                 FirstFragment.newInstance(),
                 FirstFragment::class.java.simpleName).commit()
 
-        fragmentManager.beginTransaction().add(R.id.content2,
+        supportFragmentManager.beginTransaction().add(R.id.content2,
                 SecondFragment.newInstance(),
                 SecondFragment::class.java.simpleName).commit()
     }

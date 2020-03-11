@@ -30,7 +30,7 @@ class FirstFragment : Fragment() {
     /**
      * Fragment attached to its Activity. Fragment yet merely exists.
      */
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(TAG, "onAttach")
     }

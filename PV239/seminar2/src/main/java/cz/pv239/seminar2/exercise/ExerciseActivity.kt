@@ -12,13 +12,10 @@ class ExerciseActivity : AppCompatActivity() {
         // Set content view
         setContentView(R.layout.activity_exercise)
 
-        // Get FragmentManager
-        val fragmentManager = supportFragmentManager
-
         // Create Fragment
         val fragment = ExerciseFragment()
 
         // Add Fragment to the FragmentManager, don't forget to commit
-        fragmentManager.beginTransaction().add(R.id.content,fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.content,fragment).commit()
     }
 }

@@ -18,7 +18,7 @@ class AnnoyingService : Service() {
 
         private val TAG = AnnoyingService::class.java.simpleName
 
-        private const val TIMER_DELAY: Long = 1000
+        private const val TIMER_DELAY: Long = 1_000L
     }
 
     override fun onBind(intent: Intent): IBinder? {
@@ -31,6 +31,6 @@ class AnnoyingService : Service() {
             Log.v(TAG, "AnnoyingService is running")
         }, TIMER_DELAY, TIMER_DELAY)
 
-        return Service.START_STICKY
+        return START_STICKY
     }
 }
