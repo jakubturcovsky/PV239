@@ -12,10 +12,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {       // Important, otherwise there'd be a new Fragment created with every orientation change
-            val fragmentManager = supportFragmentManager
-            fragmentManager?.beginTransaction()?.replace(android.R.id.content,
-                    GithubFragment.newInstance(),
-                    GithubFragment::class.java.simpleName)?.commit()
+            supportFragmentManager.beginTransaction()
+                    .replace(
+                            android.R.id.content,
+                            GithubFragment.newInstance(),
+                            GithubFragment::class.java.simpleName
+                    )
+                    .commit()
         }
     }
 }
