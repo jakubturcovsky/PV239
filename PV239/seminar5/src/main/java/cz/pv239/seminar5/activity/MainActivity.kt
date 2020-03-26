@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {       // Important, otherwise there'd be a new Fragment created with every orientation change
             supportFragmentManager
-                    ?.beginTransaction()
-                    ?.replace(android.R.id.content, MainFragment.newInstance(), MainFragment::class.java.simpleName)
-                    ?.commit()
+                    .beginTransaction()
+                    .replace(android.R.id.content, MainFragment.newInstance(), MainFragment::class.java.simpleName)
+                    .commit()
         }
     }
 
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
         private val TAG = MainActivity::class.java.simpleName
 
-        val CHANNEL_ID = "channel_test"
-        val NOTIFICATION_ID = 42
+        const val CHANNEL_ID = "channel_test"
+        const val NOTIFICATION_ID = 42
     }
 }
