@@ -11,6 +11,12 @@ import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.*
 
+/*
+    1. Add ACCESS_*_LOCATION permission in manifest
+    2. Add com.google.android.gms:play-services-location library to build.gradle
+    3. Request location permissions
+    4. Create location client and wait for callbacks when location is changed
+ */
 class LocationService : Service() {
 
     companion object {
