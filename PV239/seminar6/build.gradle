@@ -2,14 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
-    compileSdkVersion 28
-
-
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "cz.jakubturcovsky.seminar6"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -23,7 +21,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -31,9 +28,13 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Support libs
-    implementation 'androidx.core:core:1.0.1'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'androidx.preference:preference:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.core:core:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.preference:preference:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    /* LOCATION */
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 }

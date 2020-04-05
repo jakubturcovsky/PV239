@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="cz.jakubturcovsky.seminar6">
 
+    <!-- Approximate location, less battery drain -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- Precise location using GPS, more battery drain -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- Needed on Android 10+ for accessing location updates when app is in background -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -19,6 +26,7 @@
         </activity>
 
         <service android:name=".BroadcastService"/>
+        <service android:name=".LocationService" />
 
         <receiver android:name=".SimpleWidget">
             <intent-filter>
